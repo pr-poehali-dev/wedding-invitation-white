@@ -162,7 +162,7 @@ function Hero() {
           <div className="flex items-center gap-3 text-[#2c2420]">
             <Icon name="MapPin" size={16} className="text-[#c9a89a]" />
             <span className="text-sm tracking-widest uppercase font-light">
-              Ресторан «Белая ночь»
+              Ресторан Fish Point
             </span>
           </div>
         </div>
