@@ -38,6 +38,24 @@ function Petals() {
 function MusicPlayer() {
   const [playing, setPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const startedRef = useRef(false);
+
+  const startMusic = () => {
+    if (startedRef.current || !audioRef.current) return;
+    startedRef.current = true;
+    audioRef.current.play().then(() => setPlaying(true)).catch(() => {});
+    document.removeEventListener("click", startMusic);
+    document.removeEventListener("touchstart", startMusic);
+  };
+
+  useState(() => {
+    document.addEventListener("click", startMusic);
+    document.addEventListener("touchstart", startMusic);
+    return () => {
+      document.removeEventListener("click", startMusic);
+      document.removeEventListener("touchstart", startMusic);
+    };
+  });
 
   const toggle = () => {
     if (!audioRef.current) return;
