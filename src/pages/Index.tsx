@@ -348,9 +348,11 @@ function Venue() {
                   Адрес
                 </p>
                 <p className="text-[#2c2420] text-sm leading-relaxed">
-                  Ресторан «Белая ночь»
+                  41-й км Симферопольского шоссе,
                   <br />
-                  ул. Примерная, д. 15, Москва
+                  вблизи д. Бережки, Подольск,
+                  <br />
+                  Московская обл., 142181
                 </p>
               </div>
             </div>
@@ -391,7 +393,7 @@ function Venue() {
 
         <div className="rounded-2xl overflow-hidden border border-[#e8d5cc] shadow-sm h-64">
           <iframe
-            src="https://yandex.ru/map-widget/v1/?ll=37.593%2C55.729&z=15&pt=37.593%2C55.729%2Cpm2rdm"
+            src="https://yandex.ru/map-widget/v1/?ll=37.544%2C55.363&z=14&pt=37.544%2C55.363%2Cpm2rdm"
             width="100%"
             height="100%"
             frameBorder={0}
@@ -402,7 +404,7 @@ function Venue() {
         </div>
 
         <a
-          href="https://yandex.ru/maps/?text=Парк+Культуры+Москва"
+          href="https://yandex.ru/maps/?text=41+км+Симферопольское+шоссе+Бережки+Подольск"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 mt-4 text-xs tracking-widest uppercase text-[#c9a89a] hover:text-[#2c2420] transition-colors"
