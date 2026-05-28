@@ -112,7 +112,7 @@ function Hero() {
             fontFamily: "'Cormorant Garamond', serif",
           }}
         >
-          Александр
+          Алексей
         </h1>
         <div
           className="animate-fade-in-up flex items-center gap-4 my-2"
@@ -138,7 +138,7 @@ function Hero() {
             fontFamily: "'Cormorant Garamond', serif",
           }}
         >
-          Мария
+          Арина
         </h1>
 
         <div
@@ -425,7 +425,7 @@ function Footer() {
           fontStyle: "italic",
         }}
       >
-        Александр & Мария
+        Алексей & Арина
       </p>
       <p className="text-[#6b5a52] text-xs tracking-widest uppercase font-light">
         14 сентября 2025
