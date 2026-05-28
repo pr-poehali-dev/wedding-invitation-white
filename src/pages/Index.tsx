@@ -148,7 +148,7 @@ function Hero() {
           <div className="flex items-center gap-3 text-[#2c2420]">
             <Icon name="Calendar" size={16} className="text-[#c9a89a]" />
             <span className="text-sm tracking-widest uppercase font-light">
-              14 сентября 2025
+              22 августа 2026
             </span>
           </div>
           <div className="w-8 h-px bg-[#c9a89a]/40" />
@@ -428,7 +428,7 @@ function Footer() {
         Алексей & Арина
       </p>
       <p className="text-[#6b5a52] text-xs tracking-widest uppercase font-light">
-        14 сентября 2025
+        22 августа 2026
       </p>
       <div className="flex justify-center gap-2 mt-6">
         <Icon name="Heart" size={12} className="text-[#c9a89a]/60" />
