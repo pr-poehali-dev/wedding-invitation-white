@@ -517,9 +517,9 @@ function Venue() {
 }
 
 function DressCode() {
-  const colors = [
+  const women = [
     { hex: "#F5EDE6", name: "Пудровый" },
-    { hex: "#E8D5CC", name: "Блush" },
+    { hex: "#E8D5CC", name: "Блаш" },
     { hex: "#C9A89A", name: "Розовый беж" },
     { hex: "#D4C5B0", name: "Шампань" },
     { hex: "#B8A898", name: "Мокко" },
@@ -528,9 +528,13 @@ function DressCode() {
     { hex: "#F0EBE3", name: "Крем" },
   ];
 
-  const forbidden = [
-    { hex: "#FFFFFF", name: "Белый" },
-    { hex: "#000000", name: "Чёрный" },
+  const men = [
+    { hex: "#FFFFFF", name: "Белый", border: true },
+    { hex: "#8B6914", name: "Коричневый" },
+    { hex: "#1C1C1C", name: "Чёрный" },
+    { hex: "#D4C5A9", name: "Бежевый" },
+    { hex: "#F5F0E8", name: "Крем", border: true },
+    { hex: "#7A8C6E", name: "Олива" },
   ];
 
   return (
@@ -548,43 +552,78 @@ function DressCode() {
           </h2>
           <div className="w-10 h-px bg-[#c9a89a]/50 mx-auto mt-4" />
           <p className="text-[#9a8070] text-sm font-light mt-4 max-w-sm mx-auto leading-relaxed">
-            Мы будем рады, если вы выберете наряд в пастельных и нежных тонах,
-            созвучных настроению нашего дня.
+            Мы будем рады, если вы выберете наряд в тонах, созвучных настроению нашего дня.
           </p>
         </div>
 
-        {/* Рекомендуемые цвета */}
-        <p className="text-xs tracking-widest uppercase text-[#9a8070] mb-4 font-light text-center">
-          Рекомендуем
-        </p>
-        <div className="grid grid-cols-4 md:grid-cols-8 gap-3 mb-10">
-          {colors.map((c) => (
-            <div key={c.hex} className="flex flex-col items-center gap-2">
-              <div
-                className="w-12 h-12 md:w-14 md:h-14 rounded-full shadow-sm border border-[#e8d5cc]/60"
-                style={{ backgroundColor: c.hex }}
-              />
-              <span className="text-[10px] text-[#9a8070] text-center leading-tight font-light">
-                {c.name}
-              </span>
-            </div>
-          ))}
+        {/* Для женщин */}
+        <div className="mb-10">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="h-px flex-1 bg-[#f0e8e2]" />
+            <p className="text-xs tracking-widest uppercase text-[#c9a89a] font-light px-2">
+              Для женщин
+            </p>
+            <div className="h-px flex-1 bg-[#f0e8e2]" />
+          </div>
+          <div className="grid grid-cols-4 md:grid-cols-8 gap-3">
+            {women.map((c) => (
+              <div key={c.hex} className="flex flex-col items-center gap-2">
+                <div
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-full shadow-sm border border-[#e8d5cc]/60"
+                  style={{ backgroundColor: c.hex }}
+                />
+                <span className="text-[10px] text-[#9a8070] text-center leading-tight font-light">
+                  {c.name}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Нежелательные */}
+        {/* Для мужчин */}
+        <div className="mb-10">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="h-px flex-1 bg-[#f0e8e2]" />
+            <p className="text-xs tracking-widest uppercase text-[#c9a89a] font-light px-2">
+              Для мужчин
+            </p>
+            <div className="h-px flex-1 bg-[#f0e8e2]" />
+          </div>
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+            {men.map((c) => (
+              <div key={c.name} className="flex flex-col items-center gap-2">
+                <div
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-full shadow-sm"
+                  style={{
+                    backgroundColor: c.hex,
+                    border: c.border ? "1px solid #e8d5cc" : "1px solid transparent",
+                  }}
+                />
+                <span className="text-[10px] text-[#9a8070] text-center leading-tight font-light">
+                  {c.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Нежелательные — только для женщин */}
         <div className="bg-[#fdf8f4] rounded-2xl border border-[#e8d5cc] p-6 flex flex-col items-center gap-4">
           <p className="text-xs tracking-widest uppercase text-[#9a8070] font-light">
-            Просим избежать
+            Просим избежать (для гостей)
           </p>
           <div className="flex gap-6">
-            {forbidden.map((c) => (
-              <div key={c.hex} className="flex flex-col items-center gap-2">
-                <div className="relative w-12 h-12 rounded-full border border-[#e8d5cc]" style={{ backgroundColor: c.hex }}>
+            {[{ hex: "#FFFFFF", name: "Белый (невеста)", border: true }, { hex: "#FF0000", name: "Яркие цвета" }].map((c) => (
+              <div key={c.name} className="flex flex-col items-center gap-2">
+                <div
+                  className="relative w-12 h-12 rounded-full"
+                  style={{ backgroundColor: c.hex, border: c.border ? "1px solid #e8d5cc" : "none" }}
+                >
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-8 h-0.5 bg-[#c9a89a] rotate-45 rounded-full" />
                   </div>
                 </div>
-                <span className="text-[10px] text-[#9a8070] font-light">{c.name}</span>
+                <span className="text-[10px] text-[#9a8070] font-light text-center">{c.name}</span>
               </div>
             ))}
           </div>
