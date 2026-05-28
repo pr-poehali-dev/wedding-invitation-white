@@ -110,9 +110,9 @@ function Countdown() {
     >
       {units.map(({ label, value }) => (
         <div key={label} className="flex flex-col items-center">
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white/70 backdrop-blur-sm border border-[#e8d5cc] flex items-center justify-center shadow-sm">
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-black/20 backdrop-blur-sm border border-[#f5ede6]/20 flex items-center justify-center shadow-sm">
             <span
-              className="text-2xl md:text-3xl text-[#2c2420] tabular-nums"
+              className="text-2xl md:text-3xl text-[#f5ede6] tabular-nums"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               {String(value).padStart(2, "0")}
@@ -129,7 +129,7 @@ function Countdown() {
 
 function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#fdf8f4]">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#6B6F47]">
 
 
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent to-[#c9a89a]/40" />
@@ -156,7 +156,7 @@ function Hero() {
         </p>
 
         <h1
-          className="animate-fade-in-up text-5xl md:text-7xl text-[#2c2420] leading-none mb-2"
+          className="animate-fade-in-up text-5xl md:text-7xl text-[#f5ede6] leading-none mb-2"
           style={{
             animationDelay: "0.6s",
             opacity: 0,
@@ -182,7 +182,7 @@ function Hero() {
           <div className="h-px w-16 bg-[#c9a89a]/50" />
         </div>
         <h1
-          className="animate-fade-in-up text-5xl md:text-7xl text-[#2c2420] leading-none mb-10"
+          className="animate-fade-in-up text-5xl md:text-7xl text-[#f5ede6] leading-none mb-10"
           style={{
             animationDelay: "0.9s",
             opacity: 0,
@@ -193,24 +193,24 @@ function Hero() {
         </h1>
 
         <div
-          className="animate-fade-in-up border border-[#c9a89a]/30 rounded-2xl px-8 py-6 bg-white/60 backdrop-blur-sm flex flex-col items-center gap-3 shadow-sm"
+          className="animate-fade-in-up border border-[#f5ede6]/20 rounded-2xl px-8 py-6 bg-black/20 backdrop-blur-sm flex flex-col items-center gap-3 shadow-sm"
           style={{ animationDelay: "1.1s", opacity: 0 }}
         >
-          <div className="flex items-center gap-3 text-[#2c2420]">
+          <div className="flex items-center gap-3 text-[#f5ede6]">
             <Icon name="Calendar" size={16} className="text-[#c9a89a]" />
             <span className="text-sm tracking-widest uppercase font-light">
               22 августа 2026
             </span>
           </div>
           <div className="w-8 h-px bg-[#c9a89a]/40" />
-          <div className="flex items-center gap-3 text-[#2c2420]">
+          <div className="flex items-center gap-3 text-[#f5ede6]">
             <Icon name="Clock" size={16} className="text-[#c9a89a]" />
             <span className="text-sm tracking-widest uppercase font-light">
               15:00
             </span>
           </div>
           <div className="w-8 h-px bg-[#c9a89a]/40" />
-          <div className="flex items-center gap-3 text-[#2c2420]">
+          <div className="flex items-center gap-3 text-[#f5ede6]">
             <Icon name="MapPin" size={16} className="text-[#c9a89a]" />
             <span className="text-sm tracking-widest uppercase font-light">
               Ресторан Fish Point
@@ -296,7 +296,7 @@ function RSVPForm() {
   }
 
   return (
-    <section id="rsvp" className="py-24 px-6 bg-white">
+    <section id="rsvp" className="py-24 px-6 bg-[#6B6F47]">
       <div className="max-w-lg mx-auto">
         <div className="text-center mb-12">
           <p className="text-[#c9a89a] text-xs tracking-[0.35em] uppercase mb-3">
@@ -436,7 +436,7 @@ function RSVPForm() {
 
 function Venue() {
   return (
-    <section id="venue" className="py-24 px-6 bg-[#fdf8f4]">
+    <section id="venue" className="py-24 px-6 bg-[#6B6F47]">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-[#c9a89a] text-xs tracking-[0.35em] uppercase mb-3">
@@ -571,7 +571,7 @@ function DressCode() {
   ];
 
   return (
-    <section className="py-24 px-6 bg-white">
+    <section className="py-24 px-6 bg-[#6B6F47]">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-[#c9a89a] text-xs tracking-[0.35em] uppercase mb-3">
