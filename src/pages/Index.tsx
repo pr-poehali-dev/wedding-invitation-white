@@ -53,11 +53,11 @@ function MusicPlayer() {
     <div className="fixed top-6 right-6 z-50">
       <audio ref={audioRef} loop preload="auto">
         <source
-          src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"
+          src="https://cdn.pixabay.com/audio/2024/02/28/audio_736c2f0619.mp3"
           type="audio/mpeg"
         />
         <source
-          src="https://cdn.pixabay.com/audio/2023/06/07/audio_6a5b0fc7cd.mp3"
+          src="https://cdn.pixabay.com/audio/2023/11/13/audio_0debdedb08.mp3"
           type="audio/mpeg"
         />
       </audio>
