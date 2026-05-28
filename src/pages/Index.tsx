@@ -199,12 +199,15 @@ function Hero() {
   );
 }
 
+const RSVP_URL = "https://functions.poehali.dev/8946fe0d-228a-48fd-80ca-9b0fcd20af32";
+
 function RSVPForm() {
   const [attending, setAttending] = useState<null | boolean>(null);
   const [name, setName] = useState("");
   const [selectedDrinks, setSelectedDrinks] = useState<string[]>([]);
   const [hasRestrictions, setHasRestrictions] = useState<null | boolean>(null);
   const [restrictions, setRestrictions] = useState("");
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const toggleDrink = (drink: string) => {
@@ -215,9 +218,24 @@ function RSVPForm() {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || attending === null) return;
+    setLoading(true);
+    try {
+      await fetch(RSVP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          attending,
+          drinks: selectedDrinks,
+          hasRestrictions,
+          restrictions,
+        }),
+      });
+    } catch (err) { console.error(err); }
+    setLoading(false);
     setSubmitted(true);
   };
 
@@ -370,10 +388,10 @@ function RSVPForm() {
 
           <button
             type="submit"
-            disabled={!name.trim() || attending === null}
+            disabled={!name.trim() || attending === null || loading}
             className="mt-2 py-4 rounded-xl bg-[#2c2420] text-white text-xs tracking-widest uppercase transition-all hover:bg-[#3d3028] disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            Отправить
+            {loading ? "Отправляем..." : "Отправить"}
           </button>
         </form>
       </div>
