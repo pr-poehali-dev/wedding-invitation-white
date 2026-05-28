@@ -93,7 +93,7 @@ function Hero() {
           <img
             src={COUPLE_PHOTO}
             alt="Жених и невеста"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top"
           />
         </div>
 
