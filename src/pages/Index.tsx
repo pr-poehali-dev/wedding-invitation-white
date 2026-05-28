@@ -393,7 +393,7 @@ function Venue() {
 
         <div className="rounded-2xl overflow-hidden border border-[#e8d5cc] shadow-sm h-64">
           <iframe
-            src="https://yandex.ru/map-widget/v1/?ll=37.544%2C55.363&z=14&pt=37.544%2C55.363%2Cpm2rdm"
+            src="https://yandex.ru/map-widget/v1/?ll=37.5440%2C55.3630&z=15&pt=37.5440%2C55.3630%2Cpm2rdm&text=41+км+Симферопольского+шоссе+Бережки+Подольск"
             width="100%"
             height="100%"
             frameBorder={0}
