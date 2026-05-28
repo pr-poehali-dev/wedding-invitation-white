@@ -13,27 +13,7 @@ const DRINKS = [
   "Безалкогольное",
 ];
 
-function Petal({ style }: { style: React.CSSProperties }) {
-  return <div className="petal" style={style} />;
-}
 
-function Petals() {
-  const petals = Array.from({ length: 14 }, (_, i) => ({
-    left: `${(i * 7.1) % 100}%`,
-    animationDuration: `${7 + (i * 1.3) % 7}s`,
-    animationDelay: `${(i * 0.8) % 10}s`,
-    width: `${7 + (i * 1.1) % 9}px`,
-    height: `${7 + (i * 1.1) % 9}px`,
-  }));
-
-  return (
-    <>
-      {petals.map((p, i) => (
-        <Petal key={i} style={p} />
-      ))}
-    </>
-  );
-}
 
 function MusicPlayer() {
   const [playing, setPlaying] = useState(false);
@@ -150,7 +130,7 @@ function Countdown() {
 function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#fdf8f4]">
-      <Petals />
+
 
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent to-[#c9a89a]/40" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-t from-transparent to-[#c9a89a]/40" />
