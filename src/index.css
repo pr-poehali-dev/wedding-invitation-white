@@ -4,8 +4,14 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 30 20% 98%;
+    --foreground: 20 15% 15%;
+
+    --wedding-cream: #fdf8f4;
+    --wedding-blush: #f5ede6;
+    --wedding-rose: #c9a89a;
+    --wedding-gold: #b8946a;
+    --wedding-dark: #2c2420;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -97,5 +103,95 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Montserrat", sans-serif;
   }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Cormorant Garamond", serif;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes floatPetal {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.9s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.2s ease forwards;
+}
+
+.petal {
+  position: fixed;
+  top: -20px;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(ellipse at center, #f5ede6, #e8d5cc);
+  border-radius: 0 50% 50% 50%;
+  animation: floatPetal linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+.delay-200 {
+  animation-delay: 0.2s;
+}
+.delay-300 {
+  animation-delay: 0.3s;
+}
+.delay-400 {
+  animation-delay: 0.4s;
+}
+.delay-500 {
+  animation-delay: 0.5s;
+}
+.delay-600 {
+  animation-delay: 0.6s;
+}
+.delay-700 {
+  animation-delay: 0.7s;
+}
+.delay-800 {
+  animation-delay: 0.8s;
 }
