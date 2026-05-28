@@ -516,6 +516,84 @@ function Venue() {
   );
 }
 
+function DressCode() {
+  const colors = [
+    { hex: "#F5EDE6", name: "Пудровый" },
+    { hex: "#E8D5CC", name: "Блush" },
+    { hex: "#C9A89A", name: "Розовый беж" },
+    { hex: "#D4C5B0", name: "Шампань" },
+    { hex: "#B8A898", name: "Мокко" },
+    { hex: "#E8E0D8", name: "Айвори" },
+    { hex: "#C8D4C8", name: "Шалфей" },
+    { hex: "#F0EBE3", name: "Крем" },
+  ];
+
+  const forbidden = [
+    { hex: "#FFFFFF", name: "Белый" },
+    { hex: "#000000", name: "Чёрный" },
+  ];
+
+  return (
+    <section className="py-24 px-6 bg-white">
+      <div className="max-w-2xl mx-auto">
+        <div className="text-center mb-12">
+          <p className="text-[#c9a89a] text-xs tracking-[0.35em] uppercase mb-3">
+            дресс-код
+          </p>
+          <h2
+            className="text-4xl md:text-5xl text-[#2c2420]"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          >
+            Цветовая гамма
+          </h2>
+          <div className="w-10 h-px bg-[#c9a89a]/50 mx-auto mt-4" />
+          <p className="text-[#9a8070] text-sm font-light mt-4 max-w-sm mx-auto leading-relaxed">
+            Мы будем рады, если вы выберете наряд в пастельных и нежных тонах,
+            созвучных настроению нашего дня.
+          </p>
+        </div>
+
+        {/* Рекомендуемые цвета */}
+        <p className="text-xs tracking-widest uppercase text-[#9a8070] mb-4 font-light text-center">
+          Рекомендуем
+        </p>
+        <div className="grid grid-cols-4 md:grid-cols-8 gap-3 mb-10">
+          {colors.map((c) => (
+            <div key={c.hex} className="flex flex-col items-center gap-2">
+              <div
+                className="w-12 h-12 md:w-14 md:h-14 rounded-full shadow-sm border border-[#e8d5cc]/60"
+                style={{ backgroundColor: c.hex }}
+              />
+              <span className="text-[10px] text-[#9a8070] text-center leading-tight font-light">
+                {c.name}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Нежелательные */}
+        <div className="bg-[#fdf8f4] rounded-2xl border border-[#e8d5cc] p-6 flex flex-col items-center gap-4">
+          <p className="text-xs tracking-widest uppercase text-[#9a8070] font-light">
+            Просим избежать
+          </p>
+          <div className="flex gap-6">
+            {forbidden.map((c) => (
+              <div key={c.hex} className="flex flex-col items-center gap-2">
+                <div className="relative w-12 h-12 rounded-full border border-[#e8d5cc]" style={{ backgroundColor: c.hex }}>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-8 h-0.5 bg-[#c9a89a] rotate-45 rounded-full" />
+                  </div>
+                </div>
+                <span className="text-[10px] text-[#9a8070] font-light">{c.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   return (
     <footer className="py-12 bg-[#2c2420] text-center">
@@ -546,6 +624,7 @@ export default function Index() {
       <MusicPlayer />
       <Hero />
       <RSVPForm />
+      <DressCode />
       <Venue />
       <Footer />
     </div>
