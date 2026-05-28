@@ -137,13 +137,13 @@ function Hero() {
 
       <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-2xl mx-auto">
         <div
-          className="animate-fade-in w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-white shadow-2xl mb-10"
+          className="animate-fade-in w-72 md:w-96 rounded-2xl overflow-hidden border-4 border-white shadow-2xl mb-10"
           style={{ animationDelay: "0.2s", opacity: 0 }}
         >
           <img
             src={COUPLE_PHOTO}
             alt="Жених и невеста"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-auto object-cover"
           />
         </div>
 
