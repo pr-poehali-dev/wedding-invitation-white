@@ -185,6 +185,8 @@ function RSVPForm() {
   const [attending, setAttending] = useState<null | boolean>(null);
   const [name, setName] = useState("");
   const [selectedDrinks, setSelectedDrinks] = useState<string[]>([]);
+  const [hasRestrictions, setHasRestrictions] = useState<null | boolean>(null);
+  const [restrictions, setRestrictions] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const toggleDrink = (drink: string) => {
@@ -284,27 +286,68 @@ function RSVPForm() {
           </div>
 
           {attending === true && (
-            <div>
-              <label className="text-xs tracking-widest uppercase text-[#9a8070] mb-3 block font-light">
-                Что будете пить?
-              </label>
-              <div className="flex flex-wrap gap-2">
-                {DRINKS.map((drink) => (
+            <>
+              <div>
+                <label className="text-xs tracking-widest uppercase text-[#9a8070] mb-3 block font-light">
+                  Что будете пить?
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {DRINKS.map((drink) => (
+                    <button
+                      key={drink}
+                      type="button"
+                      onClick={() => toggleDrink(drink)}
+                      className={`px-4 py-2 rounded-full text-xs border transition-all ${
+                        selectedDrinks.includes(drink)
+                          ? "bg-[#c9a89a] text-white border-[#c9a89a]"
+                          : "bg-white text-[#2c2420] border-[#e8d5cc] hover:border-[#c9a89a]"
+                      }`}
+                    >
+                      {drink}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="text-xs tracking-widest uppercase text-[#9a8070] mb-3 block font-light">
+                  Есть ли у вас ограничения в еде?
+                </label>
+                <div className="flex gap-3 mb-3">
                   <button
-                    key={drink}
                     type="button"
-                    onClick={() => toggleDrink(drink)}
-                    className={`px-4 py-2 rounded-full text-xs border transition-all ${
-                      selectedDrinks.includes(drink)
-                        ? "bg-[#c9a89a] text-white border-[#c9a89a]"
+                    onClick={() => setHasRestrictions(false)}
+                    className={`flex-1 py-3 rounded-xl text-sm border transition-all ${
+                      hasRestrictions === false
+                        ? "bg-[#2c2420] text-white border-[#2c2420]"
                         : "bg-white text-[#2c2420] border-[#e8d5cc] hover:border-[#c9a89a]"
                     }`}
                   >
-                    {drink}
+                    Нет
                   </button>
-                ))}
+                  <button
+                    type="button"
+                    onClick={() => setHasRestrictions(true)}
+                    className={`flex-1 py-3 rounded-xl text-sm border transition-all ${
+                      hasRestrictions === true
+                        ? "bg-[#2c2420] text-white border-[#2c2420]"
+                        : "bg-white text-[#2c2420] border-[#e8d5cc] hover:border-[#c9a89a]"
+                    }`}
+                  >
+                    Да
+                  </button>
+                </div>
+                {hasRestrictions === true && (
+                  <textarea
+                    value={restrictions}
+                    onChange={(e) => setRestrictions(e.target.value)}
+                    placeholder="Укажите ваши ограничения (аллергии, вегетарианство и т.д.)"
+                    rows={3}
+                    className="w-full border border-[#e8d5cc] rounded-xl px-4 py-3 text-sm text-[#2c2420] bg-[#fdf8f4] focus:outline-none focus:border-[#c9a89a] transition-colors placeholder:text-[#c9b8b0] resize-none"
+                  />
+                )}
               </div>
-            </div>
+            </>
           )}
 
           <button
