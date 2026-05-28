@@ -51,18 +51,27 @@ function MusicPlayer() {
 
   return (
     <div className="fixed top-6 right-6 z-50">
-      <audio ref={audioRef} loop>
+      <audio ref={audioRef} loop preload="auto">
         <source
-          src="https://cdn.pixabay.com/audio/2022/10/18/audio_a5e27e0f17.mp3"
+          src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"
+          type="audio/mpeg"
+        />
+        <source
+          src="https://cdn.pixabay.com/audio/2023/06/07/audio_6a5b0fc7cd.mp3"
           type="audio/mpeg"
         />
       </audio>
       <button
         onClick={toggle}
-        className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#c9a89a] bg-white/80 backdrop-blur-sm text-[#2c2420] text-xs tracking-widest uppercase shadow-sm hover:bg-[#f5ede6] transition-all"
+        className={`flex items-center gap-2 px-4 py-2 rounded-full border border-[#c9a89a] bg-white/80 backdrop-blur-sm text-[#2c2420] text-xs tracking-widest uppercase shadow-sm hover:bg-[#f5ede6] transition-all ${playing ? "ring-2 ring-[#c9a89a]/30 ring-offset-1" : ""}`}
       >
-        <Icon name={playing ? "Pause" : "Music"} size={14} />
-        <span>{playing ? "Пауза" : "Музыка"}</span>
+        <span className={`relative flex items-center ${playing ? "text-[#c9a89a]" : ""}`}>
+          <Icon name={playing ? "Volume2" : "Music"} size={14} />
+          {playing && (
+            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#c9a89a] animate-pulse" />
+          )}
+        </span>
+        <span>{playing ? "Играет" : "Музыка"}</span>
       </button>
     </div>
   );
