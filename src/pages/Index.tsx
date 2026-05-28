@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
 const COUPLE_PHOTO =
-  "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/4d323749-4e61-4287-998c-7337e6ef4c07.png";
+  "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/5a3980ed-375a-4c43-aaca-46595d1df269.jpg";
 
 const DRINKS = [
   "Шампанское",
