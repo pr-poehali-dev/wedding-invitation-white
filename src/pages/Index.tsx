@@ -546,6 +546,24 @@ function DressCode() {
             </p>
             <div className="h-px flex-1 bg-[#f0e8e2]" />
           </div>
+
+          {/* Примеры фото */}
+          <div className="grid grid-cols-2 gap-2 mb-6">
+            {[
+              "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/aecbfcd1-060f-4782-89bd-fb9704d5b0be.jpg",
+              "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/898bbb60-c189-48ea-9c71-15f0328e3f24.jpg",
+              "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/bca30646-9484-42b8-8d28-8fb1411ca2e5.jpg",
+              "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/83dca3d0-0a0a-49f3-9fc2-4b9f20a9760f.jpg",
+            ].map((src, i) => (
+              <div key={i} className="overflow-hidden aspect-[3/4]">
+                <img src={src} alt={`Пример ${i + 1}`} className="w-full h-full object-cover" />
+              </div>
+            ))}
+          </div>
+          <p className="text-[10px] text-[#9a8070] text-center tracking-widest uppercase font-light mb-5">
+            Примеры оттенков
+          </p>
+
           <div className="grid grid-cols-4 md:grid-cols-8 gap-3">
             {women.map((c) => (
               <div key={c.hex} className="flex flex-col items-center gap-2">
