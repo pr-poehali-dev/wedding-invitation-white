@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Icon from "@/components/ui/icon";
 
 const COUPLE_PHOTO =
@@ -95,6 +95,58 @@ function MusicPlayer() {
   );
 }
 
+const WEDDING_DATE = new Date("2026-08-22T15:00:00");
+
+function Countdown() {
+  const calc = () => {
+    const diff = WEDDING_DATE.getTime() - Date.now();
+    if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    return {
+      days: Math.floor(diff / 86400000),
+      hours: Math.floor((diff % 86400000) / 3600000),
+      minutes: Math.floor((diff % 3600000) / 60000),
+      seconds: Math.floor((diff % 60000) / 1000),
+    };
+  };
+
+  const [time, setTime] = useState(calc);
+
+  useEffect(() => {
+    const t = setInterval(() => setTime(calc()), 1000);
+    return () => clearInterval(t);
+  }, []);
+
+  const units = [
+    { label: "дней", value: time.days },
+    { label: "часов", value: time.hours },
+    { label: "минут", value: time.minutes },
+    { label: "секунд", value: time.seconds },
+  ];
+
+  return (
+    <div
+      className="animate-fade-in-up mt-8 flex gap-3 md:gap-5"
+      style={{ animationDelay: "1.3s", opacity: 0 }}
+    >
+      {units.map(({ label, value }) => (
+        <div key={label} className="flex flex-col items-center">
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white/70 backdrop-blur-sm border border-[#e8d5cc] flex items-center justify-center shadow-sm">
+            <span
+              className="text-2xl md:text-3xl text-[#2c2420] tabular-nums"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            >
+              {String(value).padStart(2, "0")}
+            </span>
+          </div>
+          <span className="mt-1.5 text-[10px] tracking-widest uppercase text-[#c9a89a] font-light">
+            {label}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#fdf8f4]">
@@ -185,8 +237,10 @@ function Hero() {
           </div>
         </div>
 
+        <Countdown />
+
         <div
-          className="animate-fade-in mt-12 flex flex-col items-center gap-2 text-[#c9a89a]"
+          className="animate-fade-in mt-8 flex flex-col items-center gap-2 text-[#c9a89a]"
           style={{ animationDelay: "1.5s", opacity: 0 }}
         >
           <span className="text-xs tracking-widest uppercase font-light">
