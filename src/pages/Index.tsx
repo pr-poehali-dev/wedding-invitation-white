@@ -497,6 +497,58 @@ function Venue() {
   );
 }
 
+function PhotoSlider({ photos }: { photos: string[] }) {
+  const [current, setCurrent] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+
+  const prev = () => setCurrent((c) => (c - 1 + photos.length) % photos.length);
+  const next = () => setCurrent((c) => (c + 1) % photos.length);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (diff > 40) next();
+    else if (diff < -40) prev();
+    touchStartX.current = null;
+  };
+
+  return (
+    <div className="relative mb-6 select-none" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+      <div className="overflow-hidden aspect-[3/4]">
+        <img
+          src={photos[current]}
+          alt={`Пример ${current + 1}`}
+          className="w-full h-full object-cover transition-opacity duration-300"
+        />
+      </div>
+      <button
+        onClick={prev}
+        className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/70 backdrop-blur-sm flex items-center justify-center shadow-sm"
+      >
+        <Icon name="ChevronLeft" size={16} className="text-[#2c2420]" />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/70 backdrop-blur-sm flex items-center justify-center shadow-sm"
+      >
+        <Icon name="ChevronRight" size={16} className="text-[#2c2420]" />
+      </button>
+      <div className="flex justify-center gap-1.5 mt-3">
+        {photos.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-1.5 h-1.5 rounded-full transition-colors ${i === current ? "bg-[#c9a89a]" : "bg-[#e8d5cc]"}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function DressCode() {
   const women = [
     { hex: "#F5EDE6", name: "Пудровый" },
@@ -547,19 +599,15 @@ function DressCode() {
             <div className="h-px flex-1 bg-[#f0e8e2]" />
           </div>
 
-          {/* Примеры фото */}
-          <div className="grid grid-cols-2 gap-2 mb-6">
-            {[
-              "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/aecbfcd1-060f-4782-89bd-fb9704d5b0be.jpg",
-              "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/898bbb60-c189-48ea-9c71-15f0328e3f24.jpg",
-              "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/bca30646-9484-42b8-8d28-8fb1411ca2e5.jpg",
-              "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/83dca3d0-0a0a-49f3-9fc2-4b9f20a9760f.jpg",
-            ].map((src, i) => (
-              <div key={i} className="overflow-hidden aspect-[3/4]">
-                <img src={src} alt={`Пример ${i + 1}`} className="w-full h-full object-cover" />
-              </div>
-            ))}
-          </div>
+          {/* Слайдер фото */}
+          <PhotoSlider photos={[
+            "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/aecbfcd1-060f-4782-89bd-fb9704d5b0be.jpg",
+            "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/898bbb60-c189-48ea-9c71-15f0328e3f24.jpg",
+            "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/bca30646-9484-42b8-8d28-8fb1411ca2e5.jpg",
+            "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/83dca3d0-0a0a-49f3-9fc2-4b9f20a9760f.jpg",
+            "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/713a36b3-ff29-4399-8c05-61b43f085a60.jpg",
+            "https://cdn.poehali.dev/projects/95e3bf13-1d28-42e5-ba8a-ec6819a4f411/bucket/639fce3e-248d-4bba-a200-d5aa1a07bc7c.jpg",
+          ]} />
           <p className="text-[10px] text-[#9a8070] text-center tracking-widest uppercase font-light mb-5">
             Примеры оттенков
           </p>
