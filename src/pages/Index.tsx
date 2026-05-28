@@ -391,27 +391,7 @@ function Venue() {
           </div>
         </div>
 
-        <div className="rounded-2xl overflow-hidden border border-[#e8d5cc] shadow-sm h-64">
-          <iframe
-            src="https://yandex.ru/map-widget/v1/?ll=37.5440%2C55.3630&z=15&pt=37.5440%2C55.3630%2Cpm2rdm&text=41+км+Симферопольского+шоссе+Бережки+Подольск"
-            width="100%"
-            height="100%"
-            frameBorder={0}
-            allowFullScreen
-            title="Карта"
-            className="w-full h-full"
-          />
-        </div>
 
-        <a
-          href="https://yandex.ru/maps/?text=41+км+Симферопольское+шоссе+Бережки+Подольск"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 mt-4 text-xs tracking-widest uppercase text-[#c9a89a] hover:text-[#2c2420] transition-colors"
-        >
-          <Icon name="ExternalLink" size={12} />
-          Открыть в Яндекс.Картах
-        </a>
       </div>
     </section>
   );
